@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
+<style>
+    fieldset{
+        width: fit-content;
+        margin: auto;
+        margin-top: 150px ;
+        height: fit-content;
+    }
+    p{
+        margin-bottom: 30px;
+    }
+</style>
 <body>
-
+<fieldset>
+    <legend style="margin-bottom: 50px"><h3>Add New Product</h3></legend>
+    <p><a>Name: <input type="text" id="name"></a>
+    <a>Type: <input type="text" id="type"></a></p>
+    <p>Spec:&nbsp&nbsp&nbsp&nbsp<textarea id="spec" style="width: 300px; height: 150px"></textarea></p>
+    <p><a>Price:&nbsp&nbsp&nbsp&nbsp<input type="number" id="price"></a></p>
+    <p><a>Product Image Url:&nbsp&nbsp<input type="text" id="imgUrl"></a></p>
+    <p><button type="button"  onclick="addProduct()">AddProduct</button></p>
+</fieldset>
+<script src="products.js"></script>
+<script src="ProductAction.js"></script>
 </body>
 </html>

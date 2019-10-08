@@ -1,4 +1,4 @@
-let User = function (id,name, gender, dob, username, password, position, salary) {
+let User = function (id, name, gender, dob, username, password, position, salary) {
     this.id = id;
     this.name = name;
     this.gender = gender;
@@ -31,13 +31,13 @@ let User = function (id,name, gender, dob, username, password, position, salary)
     this.setGender = function (gender) {
         this.gender = gender;
     };
-    
+
     this.getDob = function () {
         return this.dob;
     };
 
-    this.setDob =function (dob) {
-        this.dob =dob;
+    this.setDob = function (dob) {
+        this.dob = dob;
     };
 
     this.getUsername = function () {
@@ -69,11 +69,15 @@ let User = function (id,name, gender, dob, username, password, position, salary)
     };
 }
 
-function createUser (){
+function createUser() {
     let users = [];
-    users.push(new User(1,"Thanh","male","07/31/1995","zonesama","380617","Owner",0));
-    users.push(new User(2,"Henrik Ahnberg","male","12/19/1990","bulldog","pepega","Store Manager",400));
-    users.push(new User(3,"Jerry Lundkvist","male","06/04/1991","jerry","fromeu","Employee",200));
+    users.push(new User(1, "Thanh", "male", "07/31/1995", "zonesama", "380617", "Owner", 0));
+    users.push(new User(2, "Henrik Ahnberg", "male", "12/19/1990", "bulldog", "pepega", "Store Manager", 400));
+    users.push(new User(3, "Jerry Lundkvist", "male", "06/04/1991", "jerry", "fromeu", "Employee", 200));
     return users;
 }
-localStorage.setItem('userList',JSON.stringify(createUser()));
+
+let testList2 = localStorage.getItem('userList');
+if (testList2 == null) {
+    localStorage.setItem('userList', JSON.stringify(createUser()));
+}
