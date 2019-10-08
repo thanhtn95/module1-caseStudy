@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    fieldset {
+        width: fit-content;
+        height: fit-content;
+        margin-top: 30px;
+    }
+
+
+    table {
+        margin: auto;
+        border: 2px solid black;
+    }
+
+    tr {
+        border: 2px solid black;
+        margin: auto;
+        padding: auto;
+    }
+
+    td {
+        margin: auto;
+        border: 2px solid black;
+    }
+
+    img {
+        width: 150px;
+        height: 100px;
+    }
+</style>
 <body>
+<fieldset>
+    <legend id="userLegend"></legend>
+    <p>Position: <span style="font-weight: bolder" id="userPos"></span></p>
+    <p>
+        <button  type="button" onclick="">User Info</button>
+        <a id="managebtn"></a>
+    </p>
+    <p><button>Add New Product</button></p>
+</fieldset>
+<fieldset>
+    <legend>Product List</legend>
+    <table id="productTbl">
+    </table>
+</fieldset>
 <script src="user.js"></script>
+<script src="products.js"></script>
 <script src="productDisplayPage.js"></script>
 </body>
 </html>
