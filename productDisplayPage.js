@@ -63,6 +63,9 @@ function goToAdd(){
 function gotoEdit(id){
     window.location.assign('EditProductForm.html?'+id);
 }
+function gotoUserInfo(){
+    window.location.assign('userInfo.html?'+user.getId());
+}
 let users = retriveList('userList');
 let products = retriveList('productList');
 let user = getUserFromUrl(users);
