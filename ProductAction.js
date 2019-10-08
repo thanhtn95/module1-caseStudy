@@ -45,3 +45,33 @@ function deleteProduct(id) {
         window.location.assign("product.html?" + userId);
     }
 }
+
+function editProduct(id) {
+    if (confirm("Are You Sure?")) {
+        let name = document.getElementById("name").value;
+        let type = document.getElementById("type").value;
+        let spec = document.getElementById("spec").value;
+        spec= spec.split('--').join('<br>');
+        let price = document.getElementById("price").value;
+        let imgUrl = document.getElementById("imgUrl").value;
+        let index;
+        for(let i =0; i<productList.length;i++){
+            if(productList[i].getId() == id){
+                index = i;
+                break;
+            }
+        }
+        productList[index].name = name;
+        productList[index].type = type;
+        productList[index].spec = spec;
+        productList[index].price = price;
+        productList[index].imgurl = imgUrl;
+
+        localStorage.setItem('productList', JSON.stringify(productList));
+        window.location.assign("product.html?" + userId);
+    }
+}
+
+function GoBack() {
+    window.location.assign("product.html?" + userId);
+}

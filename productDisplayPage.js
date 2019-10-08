@@ -40,14 +40,15 @@ function display(user) {
 
 function displayProduct(products) {
     let tbl = document.getElementById('productTbl');
-    tbl.innerHTML = '<tr><td>ID</td><td>Product Name</td><td>Type</td><td>Spec</td><td>Price</td><td>Product Image</td><td></td><td></td></tr>'
     if(user.getPosition()== 'Employee'){
+        tbl.innerHTML = '<tr><td>ID</td><td>Product Name</td><td>Type</td><td>Spec</td><td>Price</td><td>Product Image</td></tr>'
         for (let i = 0; i < products.length; i++) {
             tbl.innerHTML += '<tr><td>' + products[i].getId() + '</td><td>' + products[i].getName() + '</td><td>' + products[i].getType() + '</td><td>'+products[i].spec+'</td><td>' + products[i].getPrice() + ' $</td><td><img src="' + products[i].getImgurl() + '" style="width: 150px; height: 70px"></td></tr>'
         }
     }else{
+        tbl.innerHTML = '<tr><td>ID</td><td>Product Name</td><td>Type</td><td>Spec</td><td>Price</td><td>Product Image</td><td></td><td></td></tr>'
         for (let i = 0; i < products.length; i++) {
-            tbl.innerHTML += '<tr><td>' + products[i].getId() + '</td><td>' + products[i].getName() + '</td><td>' + products[i].getType() + '</td><td>'+products[i].spec+'</td><td>' + products[i].getPrice() + ' $</td><td><img src="' + products[i].getImgurl() + '" style="width: 150px; height: 70px"></td><td><button>Edit</button></td><td><button type="button" onclick="deleteProduct('+products[i].getId()+')">Delete</button></td></tr>'
+            tbl.innerHTML += '<tr><td>' + products[i].getId() + '</td><td>' + products[i].getName() + '</td><td>' + products[i].getType() + '</td><td>'+products[i].spec+'</td><td>' + products[i].getPrice() + ' $</td><td><img src="' + products[i].getImgurl() + '" style="width: 150px; height: 70px"></td><td><button type="button" onclick="gotoEdit('+products[i].getId()+')">Edit</button></td><td><button type="button" onclick="deleteProduct('+products[i].getId()+')">Delete</button></td></tr>'
         }
     }
 }
@@ -58,6 +59,9 @@ function logOut (){
 }
 function goToAdd(){
     window.location.assign("AddProductForm.html");
+}
+function gotoEdit(id){
+    window.location.assign('EditProductForm.html?'+id);
 }
 let users = retriveList('userList');
 let products = retriveList('productList');
