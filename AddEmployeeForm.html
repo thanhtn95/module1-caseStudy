@@ -10,7 +10,7 @@
     fieldset{
         width: fit-content;
         margin: auto;
-        margin-top: 30px ;
+        margin-top: 80px ;
         height: fit-content;
     }
     p{
@@ -19,21 +19,20 @@
 </style>
 <body background="product-Image/Savin-NY-Website-Background-Web.jpg">
 <fieldset>
-    <legend style="margin-bottom: 50px"><h3>User Info</h3></legend>
-    <p><a>ID:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" id="id" disabled></a></p>
+    <legend style="margin-bottom: 50px"><h3>Add new Employee</h3></legend>
     <p><a>Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" id="name"></a></p>
     <p><a>Gender:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" id="gender"></a></p>
     <p><a>Date Of Birth: <input type="date" id="dob"></a></p>
-    <p><a>Username:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="username" disabled></a></p>
+    <p><a>Username:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="username"></a></p>
     <p><a>Password:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="password"></a></p>
-    <p><a>Position:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="position" disabled></a></p>
-    <p><a>Salary:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="number" id="salary" disabled></a></p>
+    <p><a>Position:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<select id="position"></select></a></p>
+    <p><a>Salary:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="number" id="salary"></a></p>
     <p><a></a></p>
-    <p id="editbtn"></p>
+    <p><button type="button" onclick="goToAddEmployee()">Add Employee</button></p>
     <p><button type="button" onclick="GoBack()">Back</button></p>
 </fieldset>
 <script src="user.js"></script>
 <script src="UserDataHandle.js"></script>
-<script src="userInfo.js"></script>
+<script src="AddEmployee.js"></script>
 </body>
 </html>

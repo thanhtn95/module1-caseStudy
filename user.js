@@ -71,9 +71,9 @@ let User = function (id, name, gender, dob, username, password, position, salary
 
 function createUser() {
     let users = [];
-    users.push(new User(1, "Thanh", "male", "07/31/1995", "zonesama", "380617", "Owner", 0));
-    users.push(new User(2, "Henrik Ahnberg", "male", "12/19/1990", "bulldog", "pepega", "Store Manager", 400));
-    users.push(new User(3, "Jerry Lundkvist", "male", "06/04/1991", "jerry", "fromeu", "Employee", 200));
+    users.push(new User(1, "Thanh", "male", "1995-07-31", "zonesama", "380617", "Owner", 0));
+    users.push(new User(2, "Henrik Ahnberg", "male", "1990-12-19", "bulldog", "pepega", "Store Manager", 400));
+    users.push(new User(3, "Jerry Lundkvist", "male", "1991-06-04", "jerry", "fromeu", "Employee", 200));
     return users;
 }
 

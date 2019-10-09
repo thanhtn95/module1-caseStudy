@@ -17,13 +17,17 @@ let ProductDataHandler = function () {
             spec = spec.split('--').join('<br>');
             let price = document.getElementById("price").value;
             let imgUrl = document.getElementById("imgUrl").value;
-            let index = 1;
-            while(!this.testIndex(index,list)){
-                index++;
+            if(name !="" && type !="" && price !=""){
+                let index = 1;
+                while(!this.testIndex(index,list)){
+                    index++;
+                }
+                list.push(new Product(index, name, type, spec, price, imgUrl));
+                localStorage.setItem('productList', JSON.stringify(list));
+                window.location.assign("products.html?" + userId);
+            }else{
+                alert("Don't leave the name and type or price empty!");
             }
-            list.push(new Product(index, name, type, spec, price, imgUrl));
-            localStorage.setItem('productList', JSON.stringify(list));
-            window.location.assign("products.html?" + userId);
         }
     };
 

@@ -22,6 +22,29 @@ let UserDataHandler = function () {
         return user;
     };
 
+    this.getEditedUserFromUrl = function (arr) {
+        let userId = window.location.href.split('?').pop();
+        let user;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].getId() == userId) {
+                user = arr[i];
+                break;
+            }
+        }
+        return user;
+    };
+
+    this.getUserFromId = function (id, arr) {
+        let tmp;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].getId() == id) {
+                tmp = arr[i];
+                break;
+            }
+        }
+        return tmp;
+    }
+
     this.SelfEditUserInfo = function (userList, userId) {
         if (confirm("Are You Sure?")) {
             let id = document.getElementById('id').value;
@@ -65,17 +88,88 @@ let UserDataHandler = function () {
             return tmp;
         }
     };
-    
-    this.deleteEmployee = function (id,list,userId) {
-        if(confirm("Are you sure you want to terminate this employee?")){
+
+    this.deleteEmployee = function (id, list, userId) {
+        if (confirm("Are you sure you want to terminate this employee?")) {
             let tmp = [];
-            for(let i =0; i<list.length;i++){
-                if(list[i].getId() != id){
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].getId() != id) {
                     tmp.push(list[i]);
                 }
             }
             localStorage.setItem('userList', JSON.stringify(tmp));
             window.location.assign("employee.html?" + userId);
         }
+    };
+
+    this.addNewEmployee = function (list, userId) {
+        if (confirm("Are You Sure?")) {
+            let username = document.getElementById('username').value;
+            let name = document.getElementById('name').value;
+            let gender = document.getElementById('gender').value;
+            let dob = document.getElementById('dob').value;
+            let password = document.getElementById('password').value;
+            let pos = document.getElementById('position');
+            let position = pos.options[pos.selectedIndex].value;
+            let salary = document.getElementById('salary').value;
+            if (this.testUsername(username, list)) {
+                if (username != "" && name != "" && gender != "" && dob != "" && password != "" && salary != "") {
+                    let index = 1;
+                    while (!this.testIndex(index, list)) {
+                        index++;
+                    }
+                    list.push(new User(index, name, gender, dob, username, password, position, salary));
+                    localStorage.setItem('userList', JSON.stringify(list));
+                    window.location.assign("employee.html?" + userId);
+                } else {
+                    alert("Don't Leave Any Input Field Empty");
+                }
+            } else {
+                alert("That Username have already been taken by someone else!");
+                document.getElementById('username').focus();
+            }
+        }
+    };
+    this.EditUserInfo = function (id, list, userId) {
+        if (confirm("Are You Sure?")) {
+            let username = document.getElementById('username').value;
+            let name = document.getElementById('name').value;
+            let gender = document.getElementById('gender').value;
+            let dob = document.getElementById('dob').value;
+            let password = document.getElementById('password').value;
+            let pos = document.getElementById('position');
+            let position = pos.options[pos.selectedIndex].value;
+            let salary = document.getElementById('salary').value;
+            if (this.testUsername(username, list)) {
+                if (username != "" && name != "" && gender != "" && dob != "" && password != "" && salary != "") {
+                    let index = 1;
+                    while (!this.testIndex(index, list)) {
+                        index++;
+                    }
+                    list.push(new User(index, name, gender, dob, username, password, position, salary));
+                    localStorage.setItem('userList', JSON.stringify(list));
+                    window.location.assign("employee.html?" + userId);
+                } else {
+                    alert("Don't Leave Any Input Field Empty");
+                }
+            } else {
+                alert("That Username have already been taken by someone else!");
+                document.getElementById('username').focus();
+            }
+        }
     }
+
+    this.testIndex = function (index, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].getId() == index) return false;
+        }
+        return true;
+    };
+
+    this.testUsername = function (username, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].getUsername() == username) return false;
+        }
+        return true;
+    };
 }
