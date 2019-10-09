@@ -21,31 +21,55 @@ let UserDataHandler = function () {
         }
         return user;
     };
-    
-    this.SelfEditUserInfo = function (userList,userId) {
-       if(confirm("Are You Sure?")){
-           let id = document.getElementById('id').value;
-           let name = document.getElementById('name').value;
-           let gender = document.getElementById('gender').value;
-           let dob = document.getElementById('dob').value;
-           let password = document.getElementById('password').value;
-           let index;
-           for(let i =0; i<userList.length;i++){
-               if(userList[i].getId() == id){
-                   index = i;
-                   break;
-               }
-           }
 
-           userList[index].name = name;
-           userList[index].gender = gender;
-           userList[index].dob = dob;
-           userList[index].password = password;
-           localStorage.setItem('userList', JSON.stringify(userList));
-           window.location.assign("products.html?" + userId );
-       }
+    this.SelfEditUserInfo = function (userList, userId) {
+        if (confirm("Are You Sure?")) {
+            let id = document.getElementById('id').value;
+            let name = document.getElementById('name').value;
+            let gender = document.getElementById('gender').value;
+            let dob = document.getElementById('dob').value;
+            let password = document.getElementById('password').value;
+            let index;
+            for (let i = 0; i < userList.length; i++) {
+                if (userList[i].getId() == id) {
+                    index = i;
+                    break;
+                }
+            }
+
+            userList[index].name = name;
+            userList[index].gender = gender;
+            userList[index].dob = dob;
+            userList[index].password = password;
+            localStorage.setItem('userList', JSON.stringify(userList));
+            window.location.assign("products.html?" + userId);
+        }
     }
+
+    this.getEmployeeListByPosition = function (user, list) {
+        if (user.getPosition() == 'Owner') {
+            return list;
+        } else if (user.getPosition() == 'Store Manager') {
+            let tmp = [];
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].getId() == user.getId()) {
+                    tmp.push(list[i]);
+                    break;
+                }
+            }
+            for (let i = 0; i < list.length; i++) {
+                if (list[i].getPosition() != 'Owner' && list[i].getPosition() != 'Store Manager') {
+                    tmp.push(list[i]);
+                }
+            }
+            return tmp;
+        }
+    };
     
-    this.addEmployee =function () {
+    this.deleteEmployee = function (id,list,userId) {
+        if(confirm(Are you sure you want to terminate this employee?)){
+            let tmp = [];
+
+        }
     }
 }
