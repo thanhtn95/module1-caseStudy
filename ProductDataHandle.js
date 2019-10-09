@@ -64,21 +64,25 @@ let ProductDataHandler = function () {
             spec = spec.split('--').join('<br>');
             let price = document.getElementById("price").value;
             let imgUrl = document.getElementById("imgUrl").value;
-            let index;
-            for (let i = 0; i < productList.length; i++) {
-                if (productList[i].getId() == id) {
-                    index = i;
-                    break;
+            if (name != "" && type != "" && price != "") {
+                let index;
+                for (let i = 0; i < productList.length; i++) {
+                    if (productList[i].getId() == id) {
+                        index = i;
+                        break;
+                    }
                 }
-            }
-            productList[index].name = name;
-            productList[index].type = type;
-            productList[index].spec = spec;
-            productList[index].price = price;
-            productList[index].imgurl = imgUrl;
+                productList[index].name = name;
+                productList[index].type = type;
+                productList[index].spec = spec;
+                productList[index].price = price;
+                productList[index].imgurl = imgUrl;
 
-            localStorage.setItem('productList', JSON.stringify(productList));
-            window.location.assign("products.html?" + userId);
+                localStorage.setItem('productList', JSON.stringify(productList));
+                window.location.assign("products.html?" + userId);
+            }else{
+                alert("Don't leave the name and type or price empty!");
+            }
         }
     };
 

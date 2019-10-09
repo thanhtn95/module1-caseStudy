@@ -142,11 +142,20 @@ let UserDataHandler = function () {
             let salary = document.getElementById('salary').value;
             if (this.testUsername(username, list)) {
                 if (username != "" && name != "" && gender != "" && dob != "" && password != "" && salary != "") {
-                    let index = 1;
-                    while (!this.testIndex(index, list)) {
-                        index++;
+                    let index;
+                    for (let i = 0; i < list.length; i++) {
+                        if (list[i].getId() == id) {
+                            index = i;
+                            break;
+                        }
                     }
-                    list.push(new User(index, name, gender, dob, username, password, position, salary));
+                    list[index].setName(name);
+                    list[index].setGender(gender);
+                    list[index].username = username;
+                    list[index].password = password;
+                    list[index].dob = dob;
+                    list[index].position =position;
+                    list[index].salary =salary;
                     localStorage.setItem('userList', JSON.stringify(list));
                     window.location.assign("employee.html?" + userId);
                 } else {
