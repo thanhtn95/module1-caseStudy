@@ -12,12 +12,15 @@ function displayEmployee(users,user) {
         if(users[i].getId() == user.getId()){
             tbl.innerHTML += '<tr><td>' + users[i].getId() + '</td><td>' + users[i].getName() + '</td><td>' + users[i].getGender() + '</td><td>' + users[i].getDob() + '</td><td>' + users[i].getUsername() + '</td><td>'+users[i].getPosition()+'</td><td>'+users[i].getSalary()+' $</td><td><button type="button" onclick="gotoEdit(' + users[i].getId() + ')">Edit</button></td><td></td></tr>'
         }else{
-            tbl.innerHTML += '<tr><td>' + users[i].getId() + '</td><td>' + users[i].getName() + '</td><td>' + users[i].getGender() + '</td><td>' + users[i].getDob() + '</td><td>' + users[i].getUsername() + '</td><td>'+users[i].getPosition()+'</td><td>'+users[i].getSalary()+' $</td><td><button type="button" onclick="gotoEdit(' + users[i].getId() + ')">Edit</button></td><td><button type="button" onclick="gotoDelete(' + users[i].getId() + ')">Delete</button></td></tr>'
+            tbl.innerHTML += '<tr><td>' + users[i].getId() + '</td><td>' + users[i].getName() + '</td><td>' + users[i].getGender() + '</td><td>' + users[i].getDob() + '</td><td>' + users[i].getUsername() + '</td><td>'+users[i].getPosition()+'</td><td>'+users[i].getSalary()+' $</td><td><button type="button" onclick="gotoEdit(' + users[i].getId() + ')">Edit</button></td><td><button type="button" onclick="goToDeleteEmployee(' + users[i].getId() + ')">Delete</button></td></tr>'
         }
     }
 }
 function goBack(){
     window.location.assign('products.html?'+user.getId());
+}
+function goToDeleteEmployee(id){
+    userhandler.deleteEmployee(id,users,user.getId());
 }
 
 let userhandler = new UserDataHandler();

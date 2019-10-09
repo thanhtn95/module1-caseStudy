@@ -67,9 +67,15 @@ let UserDataHandler = function () {
     };
     
     this.deleteEmployee = function (id,list,userId) {
-        if(confirm(Are you sure you want to terminate this employee?)){
+        if(confirm("Are you sure you want to terminate this employee?")){
             let tmp = [];
-
+            for(let i =0; i<list.length;i++){
+                if(list[i].getId() != id){
+                    tmp.push(list[i]);
+                }
+            }
+            localStorage.setItem('userList', JSON.stringify(tmp));
+            window.location.assign("employee.html?" + userId);
         }
     }
 }
