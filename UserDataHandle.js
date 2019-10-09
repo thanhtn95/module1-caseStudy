@@ -132,7 +132,6 @@ let UserDataHandler = function () {
     };
     this.EditUserInfo = function (id, list, userId) {
         if (confirm("Are You Sure?")) {
-            let username = document.getElementById('username').value;
             let name = document.getElementById('name').value;
             let gender = document.getElementById('gender').value;
             let dob = document.getElementById('dob').value;
@@ -140,30 +139,26 @@ let UserDataHandler = function () {
             let pos = document.getElementById('position');
             let position = pos.options[pos.selectedIndex].value;
             let salary = document.getElementById('salary').value;
-            if (this.testUsername(username, list)) {
-                if (username != "" && name != "" && gender != "" && dob != "" && password != "" && salary != "") {
-                    let index;
-                    for (let i = 0; i < list.length; i++) {
-                        if (list[i].getId() == id) {
-                            index = i;
-                            break;
-                        }
+            if (name != "" && gender != "" && dob != "" && password != "" && salary != "") {
+                let index;
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].getId() == id) {
+                        index = i;
+                        break;
                     }
-                    list[index].setName(name);
-                    list[index].setGender(gender);
-                    list[index].username = username;
-                    list[index].password = password;
-                    list[index].dob = dob;
-                    list[index].position =position;
-                    list[index].salary =salary;
-                    localStorage.setItem('userList', JSON.stringify(list));
-                    window.location.assign("employee.html?" + userId);
-                } else {
-                    alert("Don't Leave Any Input Field Empty");
                 }
+                list[index].setName(name);
+                list[index].setGender(gender);
+                list[index].password = password;
+                list[index].dob = dob;
+                list[index].setPosition(position);
+                list[index].salary = salary;
+                localStorage.setItem('userList', JSON.stringify(list));
+                if (list[index].getPosition() == 'Employee' && list[index].getId() == userId) {
+                    window.location.assign("products.html?" + userId);
+                } else window.location.assign("employee.html?" + userId);
             } else {
-                alert("That Username have already been taken by someone else!");
-                document.getElementById('username').focus();
+                alert("Don't Leave Any Input Field Empty");
             }
         }
     }

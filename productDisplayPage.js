@@ -26,7 +26,7 @@ function displayProduct(products) {
 
 function logOut() {
     if (confirm("Are you sure you want to logout?")) {
-        window.location.assign("login.html");
+        window.location.assign("index.html");
     }
 }
 function goToAddForm() {
