@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    fieldset {
+        align-content: center;
+        width: fit-content;
+        height: fit-content;
+        margin-top: 30px;
+        margin-bottom: 40px;
+        margin-left: 30px;
+    }
+    legend{
+        margin-bottom: 20px;
+    }
+
+
+    table {
+        margin: auto;
+        border: 2px solid black;
+        margin-left: 30px;
+    }
+
+    tr {
+        border: 2px solid black;
+        margin: auto;
+        padding: auto;
+    }
+
+    td {
+        margin: auto;
+        border: 2px solid black;
+        text-align: center;
+    }
+
+    img {
+        width: 150px;
+        height: 100px;
+    }
+</style>
+<body background="product-Image/Savin-NY-Website-Background-Web.jpg">
+<fieldset>
+    <legend id="userLegend"></legend>
+    <p>Position: <span style="font-weight: bolder" id="userPos"></span></p>
+</fieldset>
+<fieldset>
+    <legend>Employee List</legend>
+    <table id="employeeTbl">
+    </table>
+</fieldset>
+<script src="user.js"></script>
+<script src="products.js"></script>
+<script src="ProductDataHandle.js"></script>
+<script src =UserDataHandle.js></script>
+<script src="productDisplayPage.js"></script>
+</body>
+</html>

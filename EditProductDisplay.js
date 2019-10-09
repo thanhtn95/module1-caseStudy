@@ -1,13 +1,16 @@
-function getProductFromUrl(arr) {
-    let productId = window.location.href.split('?').pop();
-    let tmpproduct;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].getId() == productId) {
-            tmpproduct = arr[i];
-            break;
-        }
-    }
-    return tmpproduct;
+let producthandler = new ProductDataHandler();
+let productList = producthandler.getProductList('productList');
+let tmp = producthandler.getProductFromUrl(productList);
+let userId = localStorage.getItem('currentUser');
+document.getElementById('editbtn').innerHTML = '<button type="button"  onclick="goToEditProduct(' + tmp.getId() + ')">Change Product Info</button>'
+showInfo(tmp);
+
+function GoBack() {
+    window.location.assign("products.html?" + userId);
+}
+
+function goToEditProduct(id) {
+    producthandler.editProductInfo(id, productList, userId);
 }
 
 function showInfo(obj) {
@@ -22,7 +25,3 @@ function showInfo(obj) {
     price.value = obj.getPrice();
     imgUrl.value = obj.getImgurl();
 }
-
-let tmp = getProductFromUrl(productList);
-document.getElementById('editbtn').innerHTML='<button type="button"  onclick="editProduct('+tmp.getId()+')">Change Product Info</button>'
-showInfo(tmp);
