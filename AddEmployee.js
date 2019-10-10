@@ -16,7 +16,7 @@ function goToAddEmployee() {
 }
 
 function GoBack() {
-    window.location.assign("employee.html?" + user.getId());
+    window.location.assign("employeesList.html?" + user.getId());
 }
 
 displayForm(user);

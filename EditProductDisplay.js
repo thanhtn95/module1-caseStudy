@@ -6,7 +6,7 @@ document.getElementById('editbtn').innerHTML = '<button type="button"  onclick="
 showInfo(tmp);
 
 function GoBack() {
-    window.location.assign("products.html?" + userId);
+    window.location.assign("productsList.html?" + userId);
 }
 
 function goToEditProduct(id) {

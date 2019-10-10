@@ -52,20 +52,24 @@ let UserDataHandler = function () {
             let gender = document.getElementById('gender').value;
             let dob = document.getElementById('dob').value;
             let password = document.getElementById('password').value;
-            let index;
-            for (let i = 0; i < userList.length; i++) {
-                if (userList[i].getId() == id) {
-                    index = i;
-                    break;
+            if(name != "" && gender !="" && dob!="" && password!=""){
+                let index;
+                for (let i = 0; i < userList.length; i++) {
+                    if (userList[i].getId() == id) {
+                        index = i;
+                        break;
+                    }
                 }
-            }
 
-            userList[index].name = name;
-            userList[index].gender = gender;
-            userList[index].dob = dob;
-            userList[index].password = password;
-            localStorage.setItem('userList', JSON.stringify(userList));
-            window.location.assign("products.html?" + userId);
+                userList[index].name = name;
+                userList[index].gender = gender;
+                userList[index].dob = dob;
+                userList[index].password = password;
+                localStorage.setItem('userList', JSON.stringify(userList));
+                window.location.assign("productsList.html?" + userId);
+            }else{
+                alert("Don't leave any field empty");
+            }
         }
     }
 
@@ -98,7 +102,7 @@ let UserDataHandler = function () {
                 }
             }
             localStorage.setItem('userList', JSON.stringify(tmp));
-            window.location.assign("employee.html?" + userId);
+            window.location.assign("employeesList.html?" + userId);
         }
     };
 
@@ -119,8 +123,11 @@ let UserDataHandler = function () {
                         index++;
                     }
                     list.push(new User(index, name, gender, dob, username, password, position, salary));
+                    list = list.sort(function (a,b) {
+                        return a.id - b.id
+                    });
                     localStorage.setItem('userList', JSON.stringify(list));
-                    window.location.assign("employee.html?" + userId);
+                    window.location.assign("employeesList.html?" + userId);
                 } else {
                     alert("Don't Leave Any Input Field Empty");
                 }
@@ -155,8 +162,8 @@ let UserDataHandler = function () {
                 list[index].salary = salary;
                 localStorage.setItem('userList', JSON.stringify(list));
                 if (list[index].getPosition() == 'Employee' && list[index].getId() == userId) {
-                    window.location.assign("products.html?" + userId);
-                } else window.location.assign("employee.html?" + userId);
+                    window.location.assign("productsList.html?" + userId);
+                } else window.location.assign("employeesList.html?" + userId);
             } else {
                 alert("Don't Leave Any Input Field Empty");
             }

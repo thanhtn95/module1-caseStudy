@@ -25,7 +25,7 @@ function displayUserInfo(obj){
     document.getElementById('editbtn').innerHTML='<button type="button" onclick="goToEditUser()">Edit</button>';
 }
 function GoBack() {
-    window.location.assign("products.html?" + userId);
+    window.location.assign("productsList.html?" + userId);
 }
 function goToEditUser() {
     userhandler.SelfEditUserInfo(userList,userId);

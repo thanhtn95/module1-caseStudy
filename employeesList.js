@@ -17,7 +17,7 @@ function displayEmployee(users,user) {
     }
 }
 function goBack(){
-    window.location.assign('products.html?'+user.getId());
+    window.location.assign('productsList.html?'+user.getId());
 }
 function goToDeleteEmployee(id){
     userhandler.deleteEmployee(id,users,user.getId());

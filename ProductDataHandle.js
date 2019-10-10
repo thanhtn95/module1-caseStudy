@@ -23,8 +23,11 @@ let ProductDataHandler = function () {
                     index++;
                 }
                 list.push(new Product(index, name, type, spec, price, imgUrl));
+                list = list.sort(function (a,b) {
+                    return a.id - b.id
+                });
                 localStorage.setItem('productList', JSON.stringify(list));
-                window.location.assign("products.html?" + userId);
+                window.location.assign("productsList.html?" + userId);
             }else{
                 alert("Don't leave the name and type or price empty!");
             }
@@ -40,7 +43,7 @@ let ProductDataHandler = function () {
                 }
             }
             localStorage.setItem('productList', JSON.stringify(tmpList))
-            window.location.assign("products.html?" + userId);
+            window.location.assign("productsList.html?" + userId);
         }
     };
 
@@ -79,7 +82,7 @@ let ProductDataHandler = function () {
                 productList[index].imgurl = imgUrl;
 
                 localStorage.setItem('productList', JSON.stringify(productList));
-                window.location.assign("products.html?" + userId);
+                window.location.assign("productsList.html?" + userId);
             }else{
                 alert("Don't leave the name and type or price empty!");
             }

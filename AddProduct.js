@@ -2,7 +2,7 @@ let producthandler = new ProductDataHandler();
 let userId = localStorage.getItem('currentUser');
 
 function GoBack() {
-    window.location.assign("products.html?" + userId);
+    window.location.assign("productsList.html?" + userId);
 }
 function goToAdd() {
     let products = producthandler.getProductList('productList');

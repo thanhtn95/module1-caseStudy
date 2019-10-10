@@ -39,7 +39,7 @@ function DisplaySelectedUserInfo(user) {
     salary.value = user.getSalary();
 }
 function goBack() {
-    window.location.assign('employee.html?'+currentUserId);
+    window.location.assign('employeesList.html?'+currentUserId);
 }
 
 function goToEditEmployeeInfo() {

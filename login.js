@@ -14,7 +14,7 @@ function login() {
         for(let i = 0 ; i<userList.length;i++){
             if(userList[i].username === username && userList[i].password === password ){
                 flag = true;
-                window.location.assign("products.html?"+userList[i].id);
+                window.location.assign("productsList.html?"+userList[i].id);
             }
         }
         if (flag === false){
