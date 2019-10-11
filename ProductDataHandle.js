@@ -49,13 +49,9 @@ let ProductDataHandler = function () {
 
     this.getProductFromUrl = function (arr) {
         let productId = window.location.href.split('?').pop();
-        let tmpproduct;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].getId() == productId) {
-                tmpproduct = arr[i];
-                break;
-            }
-        }
+        let tmpproduct = arr.find(function (item) {
+            return item.getId() == productId;
+        });
         return tmpproduct;
     };
 
@@ -68,13 +64,9 @@ let ProductDataHandler = function () {
             let price = document.getElementById("price").value;
             let imgUrl = document.getElementById("imgUrl").value;
             if (name != "" && type != "" && price != "") {
-                let index;
-                for (let i = 0; i < productList.length; i++) {
-                    if (productList[i].getId() == id) {
-                        index = i;
-                        break;
-                    }
-                }
+                let index = productList.findIndex(function (item) {
+                    return item.getId() == id;
+                });
                 productList[index].name = name;
                 productList[index].type = type;
                 productList[index].spec = spec;

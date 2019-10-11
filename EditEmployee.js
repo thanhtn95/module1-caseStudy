@@ -1,7 +1,7 @@
 let userhandler = new UserDataHandler();
 let currentUserId = localStorage.getItem('currentUser');
 let users = userhandler.getUserList('userList');
-let currentUser = userhandler.getUserFromId(currentUserId,users);
+//let currentUser = userhandler.getUserFromId(currentUserId,users);
 let selectedUser = userhandler.getEditedUserFromUrl(users);
 
 function displayDroplist(user) {
@@ -43,7 +43,7 @@ function goBack() {
 }
 
 function goToEditEmployeeInfo() {
-    userhandler.EditUserInfo(selectedUser.getId(),users,currentUser.getId());
+    userhandler.EditUserInfo(selectedUser.getId(),users,currentUserId);
 }
 displayDroplist(selectedUser);
 setDroplist(selectedUser);

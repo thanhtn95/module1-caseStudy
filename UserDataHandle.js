@@ -12,36 +12,24 @@ let UserDataHandler = function () {
     this.getUserFromUrl = function (arr) {
         let userId = window.location.href.split('?').pop();
         localStorage.setItem('currentUser', userId);
-        let user;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].getId() == userId) {
-                user = arr[i];
-                break;
-            }
-        }
+        let user = arr.find(function (item) {
+            return item.getId() == userId;
+        });
         return user;
     };
 
     this.getEditedUserFromUrl = function (arr) {
         let userId = window.location.href.split('?').pop();
-        let user;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].getId() == userId) {
-                user = arr[i];
-                break;
-            }
-        }
+        let user = arr.find(function (item) {
+            return item.getId() == userId;
+        });
         return user;
     };
 
     this.getUserFromId = function (id, arr) {
-        let tmp;
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].getId() == id) {
-                tmp = arr[i];
-                break;
-            }
-        }
+        let tmp = arr.find(function (item) {
+            return item.getId() == id;
+        });
         return tmp;
     }
 
@@ -53,14 +41,9 @@ let UserDataHandler = function () {
             let dob = document.getElementById('dob').value;
             let password = document.getElementById('password').value;
             if(name != "" && gender !="" && dob!="" && password!=""){
-                let index;
-                for (let i = 0; i < userList.length; i++) {
-                    if (userList[i].getId() == id) {
-                        index = i;
-                        break;
-                    }
-                }
-
+                let index = userList.findIndex(function (item) {
+                    return item.getId() == id;
+                });
                 userList[index].name = name;
                 userList[index].gender = gender;
                 userList[index].dob = dob;
@@ -147,13 +130,9 @@ let UserDataHandler = function () {
             let position = pos.options[pos.selectedIndex].value;
             let salary = document.getElementById('salary').value;
             if (name != "" && gender != "" && dob != "" && password != "" && salary != "") {
-                let index;
-                for (let i = 0; i < list.length; i++) {
-                    if (list[i].getId() == id) {
-                        index = i;
-                        break;
-                    }
-                }
+                let index = list.findIndex(function (item) {
+                    return item.getId() == id;
+                });
                 list[index].setName(name);
                 list[index].setGender(gender);
                 list[index].password = password;
